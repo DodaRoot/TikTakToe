@@ -1,3 +1,5 @@
+let playerContent = document.querySelector('.contain')
+let gameContent = document.querySelector('.gameContent')
 let textInfo = document.querySelector('.infoText')
 let turn = document.querySelector('.turn')
 let btn = document.querySelectorAll('.btn')
@@ -17,6 +19,8 @@ let indexes = {
     axisOne: ['t1', 'm2', 'b3'],
     axisTwo: ['b1', 'm2', 't3']
 }
+
+gameContent.style.display = 'none'
 
 btn.forEach((x) => {
     x.addEventListener('click', () => {
@@ -103,20 +107,17 @@ function change (x) {
 
 let p1 = 'Player One'
 let p2 = 'Player Two'
+
 // Player Data
 function playerInfo() {
-    let p1 = document.querySelector('#PlayerOne').value
-    let p2 = document.querySelector('#PlayerTwo').value
-    localStorage.setItem("p1", p1)
-    localStorage.setItem("p2", p2)
-    window.location.replace('http://127.0.0.1:5500/Repo/TikTakToe/game')
+    p1 = document.querySelector('#PlayerOne').value
+    p2 = document.querySelector('#PlayerTwo').value
     event.preventDefault()
+    gameContent.style.display = 'contents'
+    playerContent.style.display = 'none'
+    textInfo.innerText = `Hello ${p1} and ${p2}`
+    turn.innerText = `The turn is for ${p1}`
 }
-p1 = localStorage.getItem("p1")
-p2 = localStorage.getItem("p2")
-
-textInfo.innerText = `Hello ${p1} and ${p2}`
-turn.innerText = `The turn is for ${p1}`
 
 if (p1 == '' || p2 == '') {
     textInfo.innerText = `Hello stranger`
