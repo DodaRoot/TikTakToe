@@ -107,13 +107,13 @@ let p2 = 'Player Two'
 function playerInfo() {
     let p1 = document.querySelector('#PlayerOne').value
     let p2 = document.querySelector('#PlayerTwo').value
-    sessionStorage.setItem("p1", p1)
-    sessionStorage.setItem("p2", p2)
+    localStorage.setItem("p1", p1)
+    localStorage.setItem("p2", p2)
     window.location.replace('http://127.0.0.1:5500/Repo/TikTakToe/game')
     event.preventDefault()
 }
-p1 = sessionStorage.getItem("p1")
-p2 = sessionStorage.getItem("p2")
+p1 = localStorage.getItem("p1")
+p2 = localStorage.getItem("p2")
 
 textInfo.innerText = `Hello ${p1} and ${p2}`
 turn.innerText = `The turn is for ${p1}`
