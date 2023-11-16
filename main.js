@@ -76,13 +76,19 @@ function change (x) {
         })
     }
     let child = document.createElement('h3')
+    let button = document.createElement('button')
     let wt = document.querySelector('.winnerText')
     wt.append(child)
+    wt.append(button)
     if (w == 0) {
         child.innerText = 'O wins the game'
     }
     else if (w == 1) {
         child.innerText = 'X wins the game'
     }
+    button.innerText = 'Restart'
+    button.addEventListener('click', () => {
+        location.reload()
+    })
 }
 
