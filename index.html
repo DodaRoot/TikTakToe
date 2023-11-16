@@ -8,23 +8,20 @@
     <script src="main.js" async></script>
 </head>
 <body>
-    <div class="container">
-        <div class="top">
-            <div class="btn" role="t1" id="t1"></div>
-            <div class="btn" role="m1" id="m1"></div>
-            <div class="btn" role="b1" id="b1"></div>
-        </div>
-        <div class="mid">
-            <div class="btn" role="t2" id="t2"></div>
-            <div class="btn" role="m2" id="m2"></div>
-            <div class="btn" role="b2" id="b2"></div>
-        </div>
-        <div class="bot">
-            <div class="btn" role="t3" id="t3"></div>
-            <div class="btn" role="m3" id="m3"></div>
-            <div class="btn" role="b3" id="b3"></div>
-        </div>
+    <div class="contain">
+        <form action="none">
+            <label for="PlayerOne">Player One</label>
+            <br>
+            <input type="text" id="PlayerOne" name="PlayerOne" placeholder="Exp.PlayerOne">
+            <br>
+            <br>
+            <label for="PlayerTwo">Player Two</label>
+            <br>
+            <input type="text" id="PlayerTwo" name="PlayerTwo" placeholder="Exp.PlayerTwo">
+            <br>
+            <br>
+            <button onclick="playerInfo()" id="formButton">Submit</button>
+        </form>
     </div>
-    <div class="winnerText"></div>
 </body>
 </html>

@@ -1,3 +1,5 @@
+let textInfo = document.querySelector('.infoText')
+let turn = document.querySelector('.turn')
 let btn = document.querySelectorAll('.btn')
 let op = 0
 let obj = {
@@ -19,6 +21,8 @@ let indexes = {
 btn.forEach((x) => {
     x.addEventListener('click', () => {
         if (op == 0) {
+            p1 == '' ? turn.innerText = `The turn is for O` : false ;
+            p1 != '' ? turn.innerText = `The turn is for ${p2}` : false ;
             x.innerHTML = 'X'
             x.style.color = 'red'
             op = 1
@@ -28,6 +32,8 @@ btn.forEach((x) => {
             logic()
         }
         else if (op == 1) {
+            p1 == '' ? turn.innerText = `The turn is for X` : false ;
+            p1 != '' ? turn.innerText = `The turn is for ${p1}` : false ;
             x.innerHTML = 'O'
             x.style.color = 'blue'
             op = 0
@@ -81,14 +87,38 @@ function change (x) {
     wt.append(child)
     wt.append(button)
     if (w == 0) {
-        child.innerText = 'O wins the game'
+        p2 == '' ? child.innerText = `O wins the game` : false ;
+        p2 != '' ? child.innerText = `${p2} wins the game` : false ;
     }
     else if (w == 1) {
-        child.innerText = 'X wins the game'
+        p1 == '' ? child.innerText = `X wins the game` : false ;
+        p1 != '' ? child.innerText = `${p1} wins the game` : false ;
     }
     button.innerText = 'Restart'
     button.addEventListener('click', () => {
         location.reload()
     })
+    turn.innerText = ''
 }
 
+let p1 = 'Player One'
+let p2 = 'Player Two'
+// Player Data
+function playerInfo() {
+    let p1 = document.querySelector('#PlayerOne').value
+    let p2 = document.querySelector('#PlayerTwo').value
+    sessionStorage.setItem("p1", p1)
+    sessionStorage.setItem("p2", p2)
+    window.location.replace('http://127.0.0.1:5500/Repo/TikTakToe/game.html')
+    event.preventDefault()
+}
+p1 = sessionStorage.getItem("p1")
+p2 = sessionStorage.getItem("p2")
+
+textInfo.innerText = `Hello ${p1} and ${p2}`
+turn.innerText = `The turn is for ${p1}`
+
+if (p1 == '' || p2 == '') {
+    textInfo.innerText = `Hello stranger`
+    turn.innerText = `Hope you enjoy this game`
+}

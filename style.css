@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    margin-top: 10%;
+    margin-top: 3%;
     display: flex;
 }
 
@@ -32,19 +32,23 @@ body {
 }
 
 button {
-    width: 150px;
+    width: 250px;
     height: 50px;
     font-size: 30px;
     font-weight: 700;
     color: white;
     background-color: red;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 @media only screen and (max-width: 500px) {
     .btn {
         width: 130px;
         height: 140px;
+    }
+    .contain {
+        width: 250px;
     }
 }
 
@@ -53,12 +57,24 @@ button {
         width: 100px;
         height: 105px;
     }
+    .contain {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .contain {
+        width: 180px;
+    }
 }
 
 @media only screen and (max-width: 330px) {
     .btn {
         width: 90px;
         height: 95px;
+    }
+    .contain {
+        width: 160px;
     }
 }
 
@@ -67,4 +83,35 @@ button {
         width: 80px;
         height: 85px;
     }
+}
+
+/* Player Selection */
+
+.contain {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10%;
+    padding: 70px;
+    border: 1px solid black;
+    border-radius: 40px;
+    background-color: rgb(33, 28, 28);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    height: 30px;
+    width: 250px;
+}
+
+#formButton{
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px
 }
