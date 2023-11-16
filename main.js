@@ -109,7 +109,7 @@ function playerInfo() {
     let p2 = document.querySelector('#PlayerTwo').value
     sessionStorage.setItem("p1", p1)
     sessionStorage.setItem("p2", p2)
-    window.location.replace('http://127.0.0.1:5500/Repo/TikTakToe/game.html')
+    window.location.replace('http://127.0.0.1:5500/Repo/TikTakToe/game')
     event.preventDefault()
 }
 p1 = sessionStorage.getItem("p1")
