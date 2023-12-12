@@ -51,6 +51,14 @@ btn.forEach((x) => {
 
 let w = 10
 function logic () {
+    // Checking if there is no winer
+    let tp = 0
+    let md = 0
+    let bt = 0
+    obj.top.every(x => x != '?') ? tp = 1 : false ;
+    obj.mid.every(x => x != '?') ? md = 1 : false ;
+    obj.bot.every(x => x != '?') ? bt = 1 : false ;
+    let all = tp + md + bt;
     // Horizontal
     obj.top.every(x => x === 1) ? ((w = 1) , change('top')) : false ;
     obj.top.every(x => x === 0) ? ((w = 0) , change('top')) : false ;
@@ -75,6 +83,10 @@ function logic () {
     axisOne.every(x => x === 0) ? ((w = 0) , change('axisOne')) : false ;
     axisTwo.every(x => x === 1) ? ((w = 1) , change('axisTwo')) : false ;
     axisTwo.every(x => x === 0) ? ((w = 0) , change('axisTwo')) : false ;
+    if (all == 3 && w != 0 && w != 1) {
+        gameEnd()
+    }
+    
 }
 
 function change (x) {
@@ -85,6 +97,28 @@ function change (x) {
             x.replaceWith(x.cloneNode(true))
         })
     }
+    gameEnd()
+}
+
+let p1 = '';
+let p2 = '';
+
+// Player Data
+function playerInfo() {
+    p1 = document.querySelector('#PlayerOne').value
+    p2 = document.querySelector('#PlayerTwo').value
+    event.preventDefault()
+    gameContent.style.display = 'contents'
+    playerContent.style.display = 'none'
+    textInfo.innerText = `Hello ${p1} and ${p2}`
+    turn.innerText = `The turn is for ${p1}`
+    if (p1 == '' || p2 == '') {
+        textInfo.innerText = `Hello stranger`
+        turn.innerText = `Hope you enjoy this game`
+    }
+}
+
+function gameEnd () {
     let child = document.createElement('h3')
     let button = document.createElement('button')
     let wt = document.querySelector('.winnerText')
@@ -98,28 +132,16 @@ function change (x) {
         p1 == '' ? child.innerText = `X wins the game` : false ;
         p1 != '' ? child.innerText = `${p1} wins the game` : false ;
     }
+    else {
+        child.innerText = "It's a Draw"
+    }
+    gameReset(button)
+}
+
+function gameReset (button) {
     button.innerText = 'Restart'
     button.addEventListener('click', () => {
         location.reload()
     })
     turn.innerText = ''
-}
-
-let p1 = 'Player One'
-let p2 = 'Player Two'
-
-// Player Data
-function playerInfo() {
-    p1 = document.querySelector('#PlayerOne').value
-    p2 = document.querySelector('#PlayerTwo').value
-    event.preventDefault()
-    gameContent.style.display = 'contents'
-    playerContent.style.display = 'none'
-    textInfo.innerText = `Hello ${p1} and ${p2}`
-    turn.innerText = `The turn is for ${p1}`
-}
-
-if (p1 == '' || p2 == '') {
-    textInfo.innerText = `Hello stranger`
-    turn.innerText = `Hope you enjoy this game`
 }
